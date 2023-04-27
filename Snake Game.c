@@ -3,7 +3,7 @@
 #include<string.h>
 #include<conio.h>
 #include<time.h>
-#include <unistd.h>
+#include<unistd.h>
 #include<windows.h>
 
 
@@ -31,7 +31,6 @@ void Desenhar(){
 
 
 void Movimento(){
-
     int i;
 
     gotoxy(c[tamanho][0],c[tamanho][1]);
@@ -62,6 +61,7 @@ void RandomComida(){
     gotoxy(comida[0],comida[1]);
     printf(" ");
     srand(time(NULL));
+    
     comida[0] = (rand() % 49+3);
     comida[1] = (rand() % 18+4);
 
@@ -84,7 +84,6 @@ void ReiniciarVariaveis() {
 int main(){
 
     char resposta = 's';
-
 
     while (resposta == 's' || resposta == 'S') {
 
@@ -182,11 +181,13 @@ int main(){
                 if(velocidade>60) velocidade-=10;
                 RandomComida();
             }
+            
             gameover=EncostarCorpo();
             Movimento();
             Desenhar();
             gotoxy(50,20);
             Sleep(velocidade);
+            
         }
 
 
